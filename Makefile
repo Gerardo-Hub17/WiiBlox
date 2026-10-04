@@ -51,6 +51,10 @@ CFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 
 OFILES_SOURCES := $(CFILES:.c=.o)
 
+# Use the PowerPC compiler driver for linking.
+# Wii projects written in C must link through $(CC).
+export LD := $(CC)
+
 export OFILES := $(OFILES_SOURCES)
 
 export HFILES :=
