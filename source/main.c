@@ -7,6 +7,7 @@
 #include <string.h>
 #include <malloc.h>
 #include "renderer.h"
+#include "files.h"
 
 static void *xfb[2];
 static GXRModeObj *rmode;
@@ -244,6 +245,12 @@ int main(int argc, char **argv)
     init_video();
     init_gx();
     Renderer_Init();
+
+    if (!Files_Init())
+        return 1;
+
+    if (!Files_Test())
+        return 1;
 
     while (1)
     {
