@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1">
+    <name>WiiBlox Classic</name>
+    <coder>Gerardo-Hub17</coder>
+    <version>0.0.1</version>
+    <release_date>20261004</release_date>
+
+    <short_description>Classic block-building sandbox for Wii</short_description>
+
+    <long_description>
+        WiiBlox Classic is an experimental homebrew project for Nintendo Wii,
+        inspired by the classic era of block-based games.
+
+        This is the first technical prototype.
+    </long_description>
+
+    <no_ios_reload/>
+</app>
+

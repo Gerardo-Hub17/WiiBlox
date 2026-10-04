@@ -1,0 +1,35 @@
+name: Build WiiBlox
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build WiiBlox
+    runs-on: ubuntu-latest
+
+    container:
+      image: devkitpro/devkitppc:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: make
+
+      - name: Prepare release files
+        run: |
+          mkdir -p release
+          cp WiiBlox.dol release/boot.dol
+          cp meta.xml release/meta.xml
+
+      - name: Upload WiiBlox artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WiiBlox-0.0.1
+          path: release/
+
