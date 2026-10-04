@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
+#include "renderer.h"
 
 static void *xfb[2];
 static GXRModeObj *rmode;
@@ -129,25 +130,6 @@ static void init_gx(void)
     GX_InvVtxCache();
 }
 
-static void draw_cube(void)
-{
-    GX_Begin(GX_QUADS, GX_VTXFMT0, 4);
-
-    GX_Position3f32(-0.6f, -0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
-
-    GX_Position3f32(0.6f, -0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
-
-    GX_Position3f32(0.6f, 0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
-
-    GX_Position3f32(-0.6f, 0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
-
-    GX_End();
-}
-
 static void draw_frame(void)
 {
     Mtx44 projection;
@@ -233,7 +215,7 @@ static void draw_frame(void)
         rmode->efbHeight
     );
 
-    draw_cube();
+    Renderer_Draw();
 
     GX_DrawDone();
 
@@ -261,6 +243,7 @@ int main(int argc, char **argv)
 {
     init_video();
     init_gx();
+    Renderer_Init();
 
     while (1)
     {

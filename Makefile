@@ -17,7 +17,7 @@ include $(DEVKITPPC)/wii_rules
 TARGET  := WiiBlox
 BUILD   := build
 SOURCES := source
-INCLUDES :=
+INCLUDES := include
 
 #---------------------------------------------------------------------------------
 # Compiler flags
