@@ -131,23 +131,70 @@ static void init_gx(void)
 
 static void draw_cube(void)
 {
-    GX_Begin(GX_QUADS, GX_VTXFMT0, 4);
+    GX_Begin(GX_TRIANGLES, GX_VTXFMT0, 36);
 
-    GX_Position3f32(-0.6f, -0.6f, -2.0f);
+    /* Frente */
     GX_Color4u8(255, 0, 0, 255);
+    GX_Position3f32(-0.6f, -0.6f, -1.4f);
+    GX_Position3f32( 0.6f, -0.6f, -1.4f);
+    GX_Position3f32( 0.6f,  0.6f, -1.4f);
 
-    GX_Position3f32( 0.6f, -0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
+    GX_Position3f32(-0.6f, -0.6f, -1.4f);
+    GX_Position3f32( 0.6f,  0.6f, -1.4f);
+    GX_Position3f32(-0.6f,  0.6f, -1.4f);
 
-    GX_Position3f32( 0.6f,  0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
+    /* Atrás */
+    GX_Color4u8(0, 0, 255, 255);
+    GX_Position3f32( 0.6f, -0.6f, -2.6f);
+    GX_Position3f32(-0.6f, -0.6f, -2.6f);
+    GX_Position3f32(-0.6f,  0.6f, -2.6f);
 
-    GX_Position3f32(-0.6f,  0.6f, -2.0f);
-    GX_Color4u8(255, 0, 0, 255);
+    GX_Position3f32( 0.6f, -0.6f, -2.6f);
+    GX_Position3f32(-0.6f,  0.6f, -2.6f);
+    GX_Position3f32( 0.6f,  0.6f, -2.6f);
+
+    /* Izquierda */
+    GX_Color4u8(0, 255, 0, 255);
+    GX_Position3f32(-0.6f, -0.6f, -2.6f);
+    GX_Position3f32(-0.6f, -0.6f, -1.4f);
+    GX_Position3f32(-0.6f,  0.6f, -1.4f);
+
+    GX_Position3f32(-0.6f, -0.6f, -2.6f);
+    GX_Position3f32(-0.6f,  0.6f, -1.4f);
+    GX_Position3f32(-0.6f,  0.6f, -2.6f);
+
+    /* Derecha */
+    GX_Color4u8(255, 255, 0, 255);
+    GX_Position3f32(0.6f, -0.6f, -1.4f);
+    GX_Position3f32(0.6f, -0.6f, -2.6f);
+    GX_Position3f32(0.6f,  0.6f, -2.6f);
+
+    GX_Position3f32(0.6f, -0.6f, -1.4f);
+    GX_Position3f32(0.6f,  0.6f, -2.6f);
+    GX_Position3f32(0.6f,  0.6f, -1.4f);
+
+    /* Arriba */
+    GX_Color4u8(255, 255, 255, 255);
+    GX_Position3f32(-0.6f, 0.6f, -1.4f);
+    GX_Position3f32( 0.6f, 0.6f, -1.4f);
+    GX_Position3f32( 0.6f, 0.6f, -2.6f);
+
+    GX_Position3f32(-0.6f, 0.6f, -1.4f);
+    GX_Position3f32( 0.6f, 0.6f, -2.6f);
+    GX_Position3f32(-0.6f, 0.6f, -2.6f);
+
+    /* Abajo */
+    GX_Color4u8(255, 0, 255, 255);
+    GX_Position3f32(-0.6f, -0.6f, -2.6f);
+    GX_Position3f32( 0.6f, -0.6f, -2.6f);
+    GX_Position3f32( 0.6f, -0.6f, -1.4f);
+
+    GX_Position3f32(-0.6f, -0.6f, -2.6f);
+    GX_Position3f32( 0.6f, -0.6f, -1.4f);
+    GX_Position3f32(-0.6f, -0.6f, -1.4f);
 
     GX_End();
 }
-
 static void draw_frame(void)
 {
     Mtx44 projection;
