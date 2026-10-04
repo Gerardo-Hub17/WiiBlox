@@ -5,17 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <malloc.h>
 
 static void *xfb[2];
 static GXRModeObj *rmode;
 static u32 xfb_index = 0;
 
 static void *fifo = NULL;
-
-static void *MEM_K0_TO_K1(void *p)
-{
-    return (void *)((u32)p | 0x80000000);
-}
 
 static void init_video(void)
 {
