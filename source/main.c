@@ -129,34 +129,127 @@ static void init_gx(void)
     GX_InvVtxCache();
 }
 
-static void draw_triangle(void)
+static void draw_cube(void)
 {
+    /*
+     * Cube centered at the origin.
+     *
+     * Coordinates:
+     *
+     *        (-,+,+) -------- (+,+,+)
+     *          /|               /|
+     *         / |              / |
+     *        /  |             /  |
+     * (-,-,+) -------- (+,-,+)  |
+     *       |   |             |  |
+     *       | (-,+,-) --------|--(+,+,-)
+     *       |  /              | /
+     *       | /               |/
+     *       |/                /
+     * (-,-,-) -------- (+,-,-)
+     */
+
     GX_Begin(
-        GX_TRIANGLES,
+        GX_QUADS,
         GX_VTXFMT0,
-        3
+        24
     );
 
-    GX_Position3f32(
-        -0.5f,
-        -0.5f,
-        -2.0f
-    );
+    /*
+     * Front face
+     * Red
+     */
+    GX_Position3f32(-0.5f, -0.5f,  0.5f);
     GX_Color4u8(255, 0, 0, 255);
 
-    GX_Position3f32(
-        0.5f,
-        -0.5f,
-        -2.0f
-    );
+    GX_Position3f32( 0.5f, -0.5f,  0.5f);
+    GX_Color4u8(255, 0, 0, 255);
+
+    GX_Position3f32( 0.5f,  0.5f,  0.5f);
+    GX_Color4u8(255, 0, 0, 255);
+
+    GX_Position3f32(-0.5f,  0.5f,  0.5f);
+    GX_Color4u8(255, 0, 0, 255);
+
+    /*
+     * Back face
+     * Blue
+     */
+    GX_Position3f32( 0.5f, -0.5f, -0.5f);
+    GX_Color4u8(0, 0, 255, 255);
+
+    GX_Position3f32(-0.5f, -0.5f, -0.5f);
+    GX_Color4u8(0, 0, 255, 255);
+
+    GX_Position3f32(-0.5f,  0.5f, -0.5f);
+    GX_Color4u8(0, 0, 255, 255);
+
+    GX_Position3f32( 0.5f,  0.5f, -0.5f);
+    GX_Color4u8(0, 0, 255, 255);
+
+    /*
+     * Left face
+     * Green
+     */
+    GX_Position3f32(-0.5f, -0.5f, -0.5f);
     GX_Color4u8(0, 255, 0, 255);
 
-    GX_Position3f32(
-        0.0f,
-        0.5f,
-        -2.0f
-    );
-    GX_Color4u8(0, 0, 255, 255);
+    GX_Position3f32(-0.5f, -0.5f,  0.5f);
+    GX_Color4u8(0, 255, 0, 255);
+
+    GX_Position3f32(-0.5f,  0.5f,  0.5f);
+    GX_Color4u8(0, 255, 0, 255);
+
+    GX_Position3f32(-0.5f,  0.5f, -0.5f);
+    GX_Color4u8(0, 255, 0, 255);
+
+    /*
+     * Right face
+     * Yellow
+     */
+    GX_Position3f32(0.5f, -0.5f,  0.5f);
+    GX_Color4u8(255, 255, 0, 255);
+
+    GX_Position3f32(0.5f, -0.5f, -0.5f);
+    GX_Color4u8(255, 255, 0, 255);
+
+    GX_Position3f32(0.5f,  0.5f, -0.5f);
+    GX_Color4u8(255, 255, 0, 255);
+
+    GX_Position3f32(0.5f,  0.5f,  0.5f);
+    GX_Color4u8(255, 255, 0, 255);
+
+    /*
+     * Top face
+     * White
+     */
+    GX_Position3f32(-0.5f, 0.5f,  0.5f);
+    GX_Color4u8(255, 255, 255, 255);
+
+    GX_Position3f32( 0.5f, 0.5f,  0.5f);
+    GX_Color4u8(255, 255, 255, 255);
+
+    GX_Position3f32( 0.5f, 0.5f, -0.5f);
+    GX_Color4u8(255, 255, 255, 255);
+
+    GX_Position3f32(-0.5f, 0.5f, -0.5f);
+    GX_Color4u8(255, 255, 255, 255);
+
+    /*
+     * Bottom face
+     * Magenta
+     */
+    GX_Position3f32(-0.5f, -0.5f, -0.5f);
+    GX_Color4u8(255, 0, 255, 255);
+
+    GX_Position3f32( 0.5f, -0.5f, -0.5f);
+    GX_Color4u8(255, 0, 255, 255);
+
+    GX_Position3f32( 0.5f, -0.5f,  0.5f);
+    GX_Color4u8(255, 0, 255, 255);
+
+    GX_Position3f32(-0.5f, -0.5f,  0.5f);
+    GX_Color4u8(255, 0, 255, 255);
 
     GX_End();
 }
@@ -246,7 +339,7 @@ static void draw_frame(void)
         rmode->efbHeight
     );
 
-    draw_triangle();
+    draw_cube();
 
     GX_DrawDone();
 
