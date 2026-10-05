@@ -252,6 +252,9 @@ int main(int argc, char **argv)
     if (!Files_Test())
         return 1;
 
+    if (!Files_Test())
+        return 1;
+
     while (1)
     {
         WPAD_ScanPads();
